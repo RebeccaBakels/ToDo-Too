@@ -1,10 +1,15 @@
-import React from 'react' 
+import React  from 'react' 
+import {List} from 'antd'
 
-function ToDoList() {
+function ToDoList({ toDoListItems }) {
+
     return (
-        <>
-        <h2>ToDoList</h2>
-        </>
+        <List 
+        size="large"
+        bordered
+        dataSource={toDoListItems}
+        renderItem={item => <List.Item>{item}</List.Item>}
+      />
     )
 }
 
