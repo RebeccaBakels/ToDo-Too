@@ -14,3 +14,8 @@ background: rgba(255, 255, 255, 0.3);
 float: right;
 margin: 16px 0 16px 24px;
 }
+
+.done {
+    text-decoration-line: line-through;
+    opacity: .4;
+}

@@ -6,7 +6,11 @@ import ToDoList from '../components/home/ToDoList'
 const {Content, Footer} = Layout
 
 function Home() {
-    const [toDoListItems, setToDoListItems] = useState(JSON.parse(localStorage.getItem('To-Do List:')))
+    const initalItems = JSON.parse(localStorage.getItem('toDoList')) 
+    || [{item: 'apple', done: false}, 
+        {item: 'orange', done: true}, 
+        {item: 'banana', done: false}]
+    const [toDoListItems, setToDoListItems] = useState(initalItems)
 
     return (
 <Layout className="layout">

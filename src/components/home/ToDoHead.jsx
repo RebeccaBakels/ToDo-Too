@@ -9,7 +9,7 @@ function ToDoHead({ toDoListItems, setToDoListItems }) {
     function addToDo() {
         setToDoListItems([...toDoListItems, newToDo])
         localStorage.setItem('To-Do List:', JSON.stringify([...toDoListItems, newToDo]))
-        setNewToDo('')
+        setNewToDo(null)
     }
 
     return (
@@ -22,8 +22,8 @@ function ToDoHead({ toDoListItems, setToDoListItems }) {
             allowClear
             enterButton="ADD"
             size="large"
-            value={newToDo}
-            onChange={(event) => setNewToDo(event.target.value)}
+            value={newToDo ? newToDo.item : null}
+            onChange={(event) => setNewToDo({item: event.target.value, done: false})}
             onSearch={addToDo}
         />
         </Space>
