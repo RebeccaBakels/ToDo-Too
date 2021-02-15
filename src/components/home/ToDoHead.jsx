@@ -1,9 +1,10 @@
-import React, {useState} from 'react' 
+import React, {useState, useContext} from 'react' 
 import { Input, Space } from 'antd';
-
+import {UserContext} from '../../App'
 const { Search } = Input
 
 function ToDoHead({ toDoListItems, setToDoListItems }) {
+    const { user } = useContext(UserContext)
     const [newToDo, setNewToDo] = useState(null)
 
     function addToDo() {
@@ -14,7 +15,7 @@ function ToDoHead({ toDoListItems, setToDoListItems }) {
 
     return (
     <header style={{ textAlign: 'center' }}>
-        <h1 >Welcome Guest</h1>
+        <h1 >Welcome {user ? 'User!' : 'Guest'}</h1>
         <h2>To-Do Too!</h2>
         <Space direction="verticle">
         <Search
