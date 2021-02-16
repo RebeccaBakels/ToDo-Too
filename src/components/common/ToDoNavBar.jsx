@@ -1,12 +1,12 @@
-import React, {useContext} from 'react' 
-import { Link } from 'react-router-dom'
+import React, {useContext, useState} from 'react' 
+import { Link, NavLink } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import { UserContext } from '../../App'
 const { Header } = Layout
 
 
 function ToDoNavBar() {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     return (
 
     <Header>
@@ -20,7 +20,7 @@ function ToDoNavBar() {
         <Menu.Item key="3"><Link to="/SignUp">Sign Up</Link></Menu.Item>
         </>
         :
-        <Menu.Item key="4"><Link to="/SignUp">Logout</Link></Menu.Item>
+        <Menu.Item key="4" onClick={() => setUser(null)}><Link to="/">Logout</Link></Menu.Item>
     }
     </Menu>
     </Header>
