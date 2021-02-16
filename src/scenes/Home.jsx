@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import ToDoHead from '../components/home/ToDoHead'
 import ToDoList from '../components/home/ToDoList'
-import Cards from '../components/home/Cards'
 
 function Home() {
     const initalItems = JSON.parse(localStorage.getItem('toDoList')) 
@@ -14,7 +13,6 @@ function Home() {
     <>
         <ToDoHead toDoListItems = {toDoListItems} setToDoListItems={setToDoListItems}/>
         <ToDoList toDoListItems = {toDoListItems} setToDoListItems={setToDoListItems}/>
-        <Cards/>
     </>
     )
 }

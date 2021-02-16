@@ -8,8 +8,10 @@ function ToDoHead({ toDoListItems, setToDoListItems }) {
     const [newToDo, setNewToDo] = useState(null)
 
     function addToDo() {
+        if(newToDo && newToDo.item && newToDo.item.trim()) {
         setToDoListItems([...toDoListItems, newToDo])
         localStorage.setItem('To-Do List:', JSON.stringify([...toDoListItems, newToDo]))
+        }
         setNewToDo(null)
     }
 

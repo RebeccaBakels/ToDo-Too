@@ -1,5 +1,6 @@
-import React, {useContext} from 'react' 
-import { Form, Input, Button, Checkbox } from 'antd'
+import React, {useContext, useState} from 'react' 
+import { useHistory } from "react-router-dom";
+import { Form, Input, Button, Checkbox, Typography } from 'antd'
 import { UserContext } from '../App'
 
 const layout = {
@@ -18,17 +19,22 @@ const tailLayout = {
 }
 
 const LogIn = () => {
-    const { setUser, firebaseAuth } = useContext(UserContext)
-    const onFinish = ({email, password}) => {
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-          .then(res => {
-              setUser(res.user) 
-          })
-          .catch(err => console.log(err))
+  const [error, setError] = useState(null)
+  const { setUser, firebaseAuth } = useContext(UserContext)
+  let history = useHistory()
+  const onFinish = ({email, password}) => {
+      firebaseAuth.signInWithEmailAndPassword(email, password)
+        .then(res => {
+          setError(null)
+          setUser(res.user)
+          history.push("/")
+        })
+        .catch(err => setError(err.message))
   }
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
+    setError(errorInfo)
+    console.log('Please input a valid email and password')
   }
 
   return (
@@ -71,6 +77,8 @@ const LogIn = () => {
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
       <Form.Item {...tailLayout}>
+        {error && <Typography.Text type="danger">{error}</Typography.Text>}
+        
         <Button type="primary" htmlType="submit">
           Login
         </Button>
