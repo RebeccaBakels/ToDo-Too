@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react' 
-import { Input, Space } from 'antd';
+import { Input, Space, Avatar } from 'antd';
 import {UserContext} from '../../App'
 const { Search } = Input
 
@@ -15,9 +15,15 @@ function ToDoHead({ toDoListItems, setToDoListItems }) {
         setNewToDo(null)
     }
 
+    const greeting = (!user)
+    ? 'Guest'
+    : user.displayName || 'User!'
+
+    const userImage = (!user || !user.photoURL) ? null : <Avatar size={64} src={user.photoURL} />
+
     return (
     <header style={{ textAlign: 'center' }}>
-        <h1 >Welcome {user ? 'User!' : 'Guest'}</h1>
+        <h1 >Welcome {greeting} {userImage}</h1>
         <h2>To-Do Too!</h2>
         <Space direction="verticle">
         <Search
