@@ -34,7 +34,10 @@ const LogIn = () => {
           setLoading(false)
           history.push("/")
         })
-        .catch(err => setError(err.message))
+        .catch(err => {
+          setLoading(false)
+          setError(err.message)
+        })
   }
 
   const loginWithGoogle = () => {
@@ -48,10 +51,14 @@ const LogIn = () => {
       setLoading(false)
       history.push("/")
     })
-    .catch(err => setError(err.message))
+    .catch(err => { 
+      setLoading(false)
+      setError(err.message)
+    })
   }
 
   const onFinishFailed = (errorInfo) => {
+    setLoading(false)
     console.log('Failed:', errorInfo)
     setError('Please input a valid email and password')
   }

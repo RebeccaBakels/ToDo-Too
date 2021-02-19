@@ -12,7 +12,6 @@ const {Content, Footer} = Layout
 
 firebase.initializeApp(firebaseConfig)
 const firebaseAuth = firebase.auth()
-
 export const UserContext = createContext(null)
 
 

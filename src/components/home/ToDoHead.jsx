@@ -3,14 +3,23 @@ import { Input, Space, Avatar } from 'antd';
 import {UserContext} from '../../App'
 const { Search } = Input
 
-function ToDoHead({ toDoListItems, setToDoListItems }) {
+function ToDoHead({ setToDoListItems }) {
     const { user } = useContext(UserContext)
     const [newToDo, setNewToDo] = useState(null)
 
     function addToDo() {
         if(newToDo && newToDo.item && newToDo.item.trim()) {
-        setToDoListItems([...toDoListItems, newToDo])
-        localStorage.setItem('To-Do List:', JSON.stringify([...toDoListItems, newToDo]))
+            console.log({newToDo})
+            fetch('https://todo-too-rb-api.web.app/tasks', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               }, 
+               body: JSON.stringify(newToDo)
+            })
+            .then(res => res.json())
+            .then(data => setToDoListItems(data))
+            .catch(err => console.log('error:', err))
         }
         setNewToDo(null)
     }
@@ -25,17 +34,17 @@ function ToDoHead({ toDoListItems, setToDoListItems }) {
     <header style={{ textAlign: 'center' }}>
         <h1 >Welcome {greeting} {userImage}</h1>
         <h2>To-Do Too!</h2>
-        <Space direction="verticle">
+        {user && <Space direction="vertical">
         <Search
             placeholder="new item"
             allowClear
             enterButton="ADD"
             size="large"
             value={newToDo ? newToDo.item : null}
-            onChange={(event) => setNewToDo({item: event.target.value, done: false})}
+            onChange={(event) => setNewToDo({item: event.target.value, userId: user.uid })}
             onSearch={addToDo}
         />
-        </Space>
+        </Space>}
     </header>
     )
 }

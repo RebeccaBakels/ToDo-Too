@@ -1,12 +1,19 @@
-import React, {useContext, useState} from 'react' 
-import { Link, NavLink } from 'react-router-dom'
+import React, {useContext} from 'react' 
+import { Link } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import { UserContext } from '../../App'
 const { Header } = Layout
 
 
 function ToDoNavBar() {
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser, firebaseAuth } = useContext(UserContext)
+    function SignOut() {
+        firebaseAuth.signOut()
+        .then(() => {
+            setUser(null)
+        })
+        .catch((error) => console.log(error))
+    }
     return (
 
     <Header>
@@ -20,7 +27,7 @@ function ToDoNavBar() {
         <Menu.Item key="3"><Link to="/SignUp">Sign Up</Link></Menu.Item>
         </>
         :
-        <Menu.Item key="4" onClick={() => setUser(null)}><Link to="/">Logout</Link></Menu.Item>
+        <Menu.Item key="4" onClick={() => SignOut()}><Link to="/">Logout</Link></Menu.Item>
     }
     </Menu>
     </Header>
