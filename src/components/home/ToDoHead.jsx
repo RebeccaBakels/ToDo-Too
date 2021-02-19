@@ -10,7 +10,7 @@ function ToDoHead({ setToDoListItems }) {
     function addToDo() {
         if(newToDo && newToDo.item && newToDo.item.trim()) {
             console.log({newToDo})
-            fetch('https://todo-too-rb-api.web.app/tasks', {
+            fetch(`https://todo-too-rb-api.web.app/tasks${user.uid}`, {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json'

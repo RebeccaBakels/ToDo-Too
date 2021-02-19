@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { UserContext } from '../App'
 import ToDoHead from '../components/home/ToDoHead'
 import ToDoList from '../components/home/ToDoList'
 
 function Home() {
-    const initialItems = 
-       [{item: 'apple', done: false}, 
-        {item: 'orange', done: true}, 
-        {item: 'banana', done: false}]
-    const [toDoListItems, setToDoListItems] = useState(initialItems)
+    const [toDoListItems, setToDoListItems] = useState([])
+    const {user} =useContext(UserContext)
     useEffect(() => {
-        fetch('https://todo-too-rb-api.web.app/tasks')
+        if (user){
+        fetch(`https://todo-too-rb-api.web.app/tasks/${user.uid}`,)
         .then(res => res.json())
         .then(data => setToDoListItems(data))
         .catch(err => console.log('error:', err))
-
-    }, [])
+        } else {
+            setToDoListItems([])
+        }
+    }, [user])
 
     return (
     <>
