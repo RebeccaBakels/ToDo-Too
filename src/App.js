@@ -16,7 +16,7 @@ export const UserContext = createContext(null)
 
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null)
   return (
     <UserContext.Provider value={{user, setUser, firebaseAuth}}>
       <Router>
@@ -31,7 +31,7 @@ function App() {
         </Switch>
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>©2021 Created by Boca Code</Footer>
+      <Footer style={{ textAlign: 'center' }}>©2021 Created by Becca Bakels</Footer>
     </Layout>
     </Router>
     </UserContext.Provider>

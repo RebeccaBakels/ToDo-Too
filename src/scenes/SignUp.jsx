@@ -1,7 +1,10 @@
 import React, {useContext, useState} from 'react' 
+import firebase from 'firebase'
+import {GoogleOutlined} from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Typography } from 'antd'
 import { UserContext } from '../App'
+
 
 const layout = {
   labelCol: {
@@ -21,6 +24,7 @@ const tailLayout = {
 const SignUp = () => {
   const [error, setError] = useState(null)
   const { setUser, firebaseAuth } = useContext(UserContext)
+  const [loading, setLoading] = useState(false)
   let history = useHistory()
   const onFinish = ({email, password}) => {
       firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -30,6 +34,22 @@ const SignUp = () => {
           history.push("/")
         })
         .catch(err => setError(err.message))
+  }
+  const loginWithGoogle = () => {
+    setLoading(true)
+    const provider = new firebase.auth.GoogleAuthProvider()
+    firebase.auth().signInWithPopup(provider)
+    .then(res => {
+      setError(null)
+      setUser(res.user)
+      console.log(res.user)
+      setLoading(false)
+      history.push("/")
+    })
+    .catch(err => { 
+      setLoading(false)
+      setError(err.message)
+    })
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -80,6 +100,16 @@ const SignUp = () => {
         {error && <Typography.Text type="danger">{error}</Typography.Text>}
         <Button type="primary" htmlType="submit">
           Sign Up
+        </Button>
+      </Form.Item>
+      <Form.Item {...tailLayout}>
+      <Button ghost
+          type="primary"
+          icon={<GoogleOutlined />}
+          loading={loading}
+          onClick={() => loginWithGoogle()}
+        >
+        Sign Up with Google        
         </Button>
       </Form.Item>
     </Form>

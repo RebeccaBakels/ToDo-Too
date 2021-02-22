@@ -28,7 +28,7 @@ function Home() {
 
     return (
     <>
-        <ToDoHead toDoListItems = {toDoListItems} setToDoListItems={setToDoListItems}/>
+        <ToDoHead setLoading={setLoading} setToDoListItems={setToDoListItems}/>
         <ToDoList setLoading={setLoading} loading={loading} toDoListItems = {toDoListItems} setToDoListItems={setToDoListItems}/>
     </>
     )

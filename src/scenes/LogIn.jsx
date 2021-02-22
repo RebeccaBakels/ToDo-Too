@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react' 
-import { useHistory, withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import firebase from 'firebase'
 import { Form, Input, Button, Checkbox, Typography } from 'antd'
 import {GoogleOutlined} from '@ant-design/icons';
@@ -43,13 +43,17 @@ const LogIn = () => {
   const loginWithGoogle = () => {
     setLoading(true)
     const provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithPopup(provider)
-    .then(res => {
-      setError(null)
-      setUser(res.user)
-      console.log(res.user)
-      setLoading(false)
-      history.push("/")
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    .then(() => {
+      firebase.auth().signInWithPopup(provider)
+      .then(res => {
+        setError(null)
+        setUser(res.user)
+        console.log(res.user)
+        setLoading(false)
+        localStorage.setItem('user', JSON.stringify(res.user))
+        history.push("/")
+      })
     })
     .catch(err => { 
       setLoading(false)
