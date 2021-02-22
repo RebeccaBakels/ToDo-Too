@@ -1,7 +1,10 @@
 .site-layout-content {
     min-height: 280px;
     padding: 24px;
-    background: #fff;
+    background: rgba(255,255,255, 0.75);
+    max-width: 600px;
+    margin: auto;
+    
 }
 #components-layout-demo-top .logo {
 float: left;
@@ -19,3 +22,26 @@ margin: 16px 0 16px 24px;
     text-decoration-line: line-through;
     opacity: .4;
 }
+
+body {
+    background-image: url('https://images.pexels.com/photos/3668372/pexels-photo-3668372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940   ');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ant-layout {
+    background: none;
+
+}
+.ant-layout-footer {
+    background: none;
+    color:#fff;
+    font-weight: 600;
+
+}
+
+.ant-list-bordered {
+    border: 1.5px solid white;
+}
+
