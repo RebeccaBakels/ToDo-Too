@@ -65,6 +65,7 @@ const LogIn = () => {
 
   return (
     <Form
+    
       {...layout}
       name="basic"
       initialValues={{
@@ -74,6 +75,7 @@ const LogIn = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
+      
         label="Email"
         name="email"
         rules={[

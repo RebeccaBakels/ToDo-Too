@@ -1,10 +1,9 @@
 .site-layout-content {
     min-height: 280px;
     padding: 24px;
-    background: rgba(255,255,255, 0.75);
+    background: rgba(0, 100, 58, 0.75);
     max-width: 600px;
     margin: auto;
-    
 }
 #components-layout-demo-top .logo {
 float: left;
@@ -24,10 +23,11 @@ margin: 16px 0 16px 24px;
 }
 
 body {
-    background-image: url('https://images.pexels.com/photos/3668372/pexels-photo-3668372.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940   ');
+    background-image: url('./assets/wallpaper.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 .ant-layout {
@@ -42,6 +42,12 @@ body {
 }
 
 .ant-list-bordered {
-    border: 1.5px solid white;
+    border: 1px solid white;
+}
+.ant-list-item {
+    color: #fff;
 }
 
+.ant-form-item-required {
+    color:#fff;
+}

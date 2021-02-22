@@ -24,7 +24,10 @@ function ToDoHead({ setToDoListItems, setLoading }) {
                 setLoading(false)
 
             })
-            .catch(err => console.log('error:', err))
+            .catch(err => {
+                console.log('error:', err)
+                setLoading(false)
+            })
         }
         setNewToDo(null)
     }
@@ -37,7 +40,7 @@ function ToDoHead({ setToDoListItems, setLoading }) {
 
     return (
     <header style={{ textAlign: 'center', paddingBottom: '40px' }}>
-        <h1 >Welcome {greeting} {userImage}</h1>
+        <h1 style={{color: 'white'}}>Welcome {greeting} {userImage}</h1>
         {user && <Space direction="vertical">
         <Search
             placeholder="new item"
