@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react' 
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import firebase from 'firebase'
 import { Form, Input, Button, Checkbox, Typography } from 'antd'
 import {GoogleOutlined} from '@ant-design/icons';
@@ -75,7 +75,6 @@ const LogIn = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-      
         label="Email"
         name="email"
         rules={[

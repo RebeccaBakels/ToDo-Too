@@ -28,10 +28,12 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     
+    
 }
 
 .ant-layout {
     background: none;
+    
 
 }
 .ant-layout-footer {
@@ -48,6 +50,32 @@ body {
     color: #fff;
 }
 
-.ant-form-item-required {
-    color:#fff;
+*{
+    color: #fff;
+    font-family: 'Lucida Sans';
+}
+
+.label {
+    color: #fff;
+    font-family: 'Lucida Sans';
+}
+
+.ant-form-item-label > label {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 32px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Lucida Sans';
+}
+.ant-btn-primary {
+    color: rgb(218, 255, 217);
+    background: #066d02;
+    border-color: #000000;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+    -webkit-box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
 }
