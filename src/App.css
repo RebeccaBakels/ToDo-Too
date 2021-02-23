@@ -84,3 +84,9 @@ body {
     cursor: pointer;
 
 }
+.ant-menu.ant-menu-dark {
+    background: none;
+}
+.ant-layout-header {
+    background: rgba(0, 100, 58, 0.75);
+}

@@ -7,6 +7,7 @@ import Home from './scenes/Home'
 import LogIn from './scenes/LogIn'
 import SignUp from './scenes/SignUp'
 import './App.css'
+import Fern from './assets/fern.png'
 import {firebaseConfig} from './config'
 const {Content, Footer} = Layout
 
@@ -32,6 +33,7 @@ function App() {
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>©2021 Created by Becca Bakels</Footer>
+      <img src={Fern} alt='leaves'/>
     </Layout>
     </Router>
     </UserContext.Provider>
