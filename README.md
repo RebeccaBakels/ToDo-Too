@@ -9,7 +9,7 @@ This is a To-Do app made in React to keep track of daily tasks you need to compl
 1. Go to https://to-do-too-rb.web.app/
 2. Sign in or Sign Up with email and password or Google
 3. You'll be redirected to the tasks page that will load your current tasks or where you can add a task
-4. Click your task once complete to cross it out
+4. Click 'done' task once complete to cross it out -or- 'delete' to remove it from your list
 5. Login on any computer to update your list
 
 ## Technologies Used
